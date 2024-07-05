@@ -1,5 +1,14 @@
 import JewelryList from "./JewelryList";
 
+
+/** 
+ * WE have to add handle PATCH and DELETE
+ * useEffect -> GET method
+ * 1) GET Method -> to see all the images/name/price of all items of all sellers
+ * 2) PATCH method -> to update a price
+ * 3) DELETE method -> to delete an item from db
+ * Not in priority: filter feature
+ * **/
 function Home() {
   return (
     <div>

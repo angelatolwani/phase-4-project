@@ -1,3 +1,10 @@
+/** 
+ * 1) POST method -> add item 
+ * 2) handleOnChange -> add to control
+ * 3) redirect to home page -> to display all items of the seller (who adds the item)
+ * 
+ * **/
+
 function Form() {
     return (
         <div className="new-plant-form">
