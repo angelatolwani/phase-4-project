@@ -1,7 +1,7 @@
 import App from "./components/App"
 import Home from "./components/Home"
 import Form from "./components/Form"
-import Sellers from "./components/Sellers"
+import SellersList from "./components/SellersList"
 import SellerDetails from "./components/SellerDetails"
 
 const routes = [
@@ -19,7 +19,7 @@ const routes = [
         },
         {
           path: "/sellers",
-          element: <Sellers />,
+          element: <SellersList />,
         },
         {
           path: "/sellers/:id",

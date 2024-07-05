@@ -1,8 +1,42 @@
 function Form() {
     return (
-        <h1>
-            This will be our add new jewely / seller form
-        </h1>
+        <div className="new-plant-form">
+      <h2>Form to add a new item</h2>
+      <form>
+        <input
+          type="text"
+          name="name"
+          placeholder="Seller name"
+        />
+        <input
+          type="text"
+          name="jewelry_name"
+          placeholder="Jewelry name"
+        />
+        <input
+          type="text"
+          name="metal"
+          placeholder="Metal"
+        />
+        <input
+          type="text"
+          name="type"
+          placeholder="Type"
+        />
+        <input
+          type="text"
+          name="image"
+          placeholder="Image URL"
+        />
+        <input
+          type="number"
+          name="price"
+          step="0.01"
+          placeholder="Price"
+        />
+        <button type="submit">Add Item</button>
+      </form>
+    </div>
     )
 }
 

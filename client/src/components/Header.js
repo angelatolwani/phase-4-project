@@ -23,9 +23,14 @@ function Header() {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar color="primary">
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div" sx={{ marginRight: "20px" }}>
                 <NavLink className="nav-link" to="/">
                   Jewelry Store
+                </NavLink>
+              </Typography>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: "0px" }}>
+                <NavLink className="nav-link" to="/sellers">
+                  Sellers
                 </NavLink>
               </Typography>
               <Button color="secondary" variant="contained" sx={{marginRight:"20px"}}>
@@ -36,7 +41,7 @@ function Header() {
             </Toolbar>
           </AppBar>
         </Box>
-        <nav>a</nav>
+        <nav></nav>
       </ThemeProvider>
     </>
   );
