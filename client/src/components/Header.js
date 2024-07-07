@@ -54,7 +54,6 @@ function Header() {
             </Toolbar>
           </AppBar>
         </Box>
-        <nav></nav>
       </ThemeProvider>
     </>
   );
