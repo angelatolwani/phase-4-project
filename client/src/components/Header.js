@@ -6,11 +6,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { lime, purple } from "@mui/material/colors";
+import Home from "./Home";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#9500ae'
+      main: "#81D8D0",
     },
     secondary: purple,
   },
@@ -21,21 +22,33 @@ function Header() {
     <>
       <ThemeProvider theme={theme}>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar color="primary">
-              <Typography variant="h6" component="div" sx={{ marginRight: "20px" }}>
-                <NavLink className="nav-link" to="/">
+          <AppBar position='static'>
+            <Toolbar color='primary'>
+              <Typography
+                variant='h6'
+                component='div'
+                sx={{ marginRight: "20px" }}
+              >
+                <NavLink className='nav-link' to='/'>
                   Jewelry Store
                 </NavLink>
               </Typography>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: "0px" }}>
-                <NavLink className="nav-link" to="/sellers">
+              <Typography
+                variant='h6'
+                component='div'
+                sx={{ flexGrow: 1, marginLeft: "0px" }}
+              >
+                <NavLink className='nav-link' to='/sellers'>
                   Sellers
                 </NavLink>
               </Typography>
-              <Button color="secondary" variant="contained" sx={{marginRight:"20px"}}>
-                <NavLink className="nav-link" to="/form">
-                  + Add New Item 
+              <Button
+                color='primary'
+                variant='contained'
+                sx={{ marginRight: "20px" }}
+              >
+                <NavLink className='nav-link' to='/form'>
+                  + Add New Item
                 </NavLink>{" "}
               </Button>
             </Toolbar>
