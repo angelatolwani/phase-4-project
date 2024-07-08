@@ -1,4 +1,5 @@
 import JewelryList from "./JewelryList";
+import { useEffect, useState } from "react";
 
 /**
  * WE have to add handle PATCH and DELETE
@@ -9,6 +10,18 @@ import JewelryList from "./JewelryList";
  * Not in priority: filter feature
  * **/
 function Home() {
+  const [jewelries, setJewelries] = useState([])
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5555/")
+    .then((r) => r.json())
+    .then((jewelryArray) => {
+      setJewelries(jewelryArray)
+      console.log({jewelryArray})
+    })
+    .catch((err) => console.error(err));
+  }, [])
+
   return (
     <div>
       <div className='filter_grid'>
@@ -43,7 +56,7 @@ function Home() {
           </select>
         </div>
       </div>
-      <JewelryList />
+      <JewelryList jewelries={jewelries}/>
     </div>
   );
 }
