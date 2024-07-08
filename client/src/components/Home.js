@@ -22,6 +22,21 @@ function Home() {
     .catch((err) => console.error(err));
   }, [])
 
+  const handleUpdatedItem = (updatedItem) => {
+    const updatedItemArray =  jewelries.map(jewelry => {
+      if (jewelry.id === updatedItem.id) return updatedItem
+      else return jewelry
+    });
+    setJewelries(updatedItemArray)
+  }
+
+  const handleDeleteItem = (id) => {
+    const updatedJewelryArray = jewelries.filter((jewelry) => {
+      return jewelry.id !== id
+    })
+    setJewelries(updatedJewelryArray)
+  }
+
   return (
     <div>
       <div className='filter_grid'>
@@ -56,7 +71,7 @@ function Home() {
           </select>
         </div>
       </div>
-      <JewelryList jewelries={jewelries}/>
+      <JewelryList jewelries={jewelries} handleDeleteItem={handleDeleteItem} handleUpdatedItem={handleUpdatedItem} />
     </div>
   );
 }

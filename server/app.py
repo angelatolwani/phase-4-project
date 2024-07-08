@@ -18,20 +18,53 @@ api = Api(app)
 
 CORS(app, supports_credentials=True)  # set up cors
 
-
-# class Jewelries(Resource):
-
-#     def get(self):
-#         jewelries = [j.to_dict() for j in Jewelry.query.all()]
-#         return make_response(jsonify(jewelries), 200)
-
-# api.add_resource(Jewelries, '/')
-
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'PATCH'])
 def get_all_jewelry():
-    # test = Jewelry.query.all()
-    jewelries = [j.to_dict() for j in Jewelry.query.all()]
-    return make_response(jsonify(jewelries), 200)
+    if request.method == 'GET':
+        jewelries = [j.to_dict() for j in Jewelry.query.all()]
+        return make_response(jsonify(jewelries), 200)
+
+@app.route('/form', methods=['POST'])
+def add_new_jewelry():
+    data = request.get_json()
+
+    new_item = Jewelry(
+        name=data['name'],
+        metal=data['metal'], 
+        type=data['type'],
+        seller_id=data['seller_id'], 
+        image=data['image'],
+        price=data['price'],
+    )
+
+    db.session.add(new_item)
+    db.session.commit()
+
+    return make_response(new_item.to_dict(), 201)
+
+
+@app.route('/<int:id>', methods=['PATCH', 'DELETE'])
+def delete_item(id):
+    item = Jewelry.query.filter(Jewelry.id == id).first()
+
+    if request.method=='DELETE':
+        
+        db.session.delete(item)
+        db.session.commit()
+
+        return {}, 204
+    elif request.method=='PATCH':
+        data = request.get_json()
+
+        for attr in data:
+             setattr(item, attr, data[attr])
+        db.session.add(item)
+        db.session.commit()
+
+        response_dict = item.to_dict()
+
+        return make_response(response_dict, 200)
+
 
 @app.route('/sellers', methods=['GET'])
 def get_all_sellers():
