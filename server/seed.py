@@ -2,14 +2,14 @@
 
 from app import app
 from models import db, Jewelry, Sellers
-import requests
+# import requests
 
 
 def run():
     # delete all rows from Jewelry and Sellers table
-    Jewelry.query.delete()
-    Sellers.query.delete()
-    db.session.commit()
+    # Jewelry.query.delete()
+    # Sellers.query.delete()
+    # db.session.commit()
 
     # add sellers
     sellers = [
