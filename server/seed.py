@@ -2,8 +2,6 @@
 
 from app import app
 from models import db, Jewelry, Sellers
-import requests
-
 
 def run():
     # delete all rows from Jewelry and Sellers table
@@ -37,13 +35,6 @@ def run():
     db.session.add_all(jewelries)
     db.session.commit()
 
-
-    name = db.Column(db.String)
-    metal = db.Column(db.String)
-    type = db.Column(db.String)
-    seller_id = db.Column(db.Integer, db.ForeignKey('sellers.id'))
-    image = db.Column(db.String)
-    price = db.Column(db.Float)
 
 if __name__ == '__main__':
     with app.app_context():

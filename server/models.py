@@ -1,9 +1,9 @@
-from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.associationproxy import association_proxy
-from flask_sqlalchemy import SQLAlchemy
 
-from config import db
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy_serializer import SerializerMixin
+
 db = SQLAlchemy()
+
 
 # Models go here!
 class Jewelry(db.Model, SerializerMixin):
@@ -25,7 +25,7 @@ class Jewelry(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Jewelry {self.name} {self.metal} {self.type} {self.seller_id} {self.image} {self.price}>'
     
-class Sellers(db.model, SerializerMixin):
+class Sellers(db.Model, SerializerMixin):
     __tablename__ = 'sellers'
 
     id = db.Column(db.Integer, primary_key=True)
