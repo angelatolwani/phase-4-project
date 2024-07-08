@@ -1,9 +1,12 @@
 import JewelryCard from "./JewelryCard";
 
-function JewelryList() {
+function JewelryList({ jewelries }) {
     return (
         <ul className="cards">
-        <JewelryCard />
+            {jewelries.map((jewelry) => {
+                return <JewelryCard key={jewelry.id} jewelry={jewelry} />
+            })}
+            {console.log('in plant list')}
         </ul>
     );
   }

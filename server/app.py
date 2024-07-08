@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, make_response
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
+from flask_cors import CORS
+
 
 from models import db, Jewelry, Sellers
 
@@ -14,6 +16,9 @@ db.init_app(app)
 
 api = Api(app)
 
+CORS(app, supports_credentials=True)  # set up cors
+
+
 # class Jewelries(Resource):
 
 #     def get(self):
@@ -26,7 +31,7 @@ api = Api(app)
 def get_all_jewelry():
     # test = Jewelry.query.all()
     jewelries = [j.to_dict() for j in Jewelry.query.all()]
-    return make_response(jewelries, 200)
+    return make_response(jsonify(jewelries), 200)
 
 @app.route('/sellers', methods=['GET'])
 def get_all_sellers():

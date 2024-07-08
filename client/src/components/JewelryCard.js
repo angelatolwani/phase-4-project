@@ -1,9 +1,11 @@
-function JewelryCard() {
+
+
+function JewelryCard( {jewelry}) {
     return (
         <li className="card">
-          <img src="https://t4.ftcdn.net/jpg/05/79/13/69/360_F_579136942_Bj9ReQ4A7CDNZaWU03vkrHeiHzBeXILe.jpg" alt="jewelry-image" />
-          <h4>Necklace</h4>
-          <p>Price: $100</p>
+          <img src={jewelry.image} alt="jewelry-image" />
+          <h4>{jewelry.name}</h4>
+          <p>Price: ${jewelry.price}</p>
           <form>
             <input
               type="number"
@@ -20,6 +22,7 @@ function JewelryCard() {
                 Delete 
           </button>
           </div>
+          {console.log('in plant card')}
         </li>
       );
 }
