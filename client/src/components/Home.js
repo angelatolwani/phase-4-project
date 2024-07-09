@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import JewelryList from "./JewelryList";
+import FilterComponent from "./FIlterComponent";
 
 /**
  * WE have to add handle PATCH and DELETE
@@ -11,6 +12,8 @@ import JewelryList from "./JewelryList";
  **/
 function Home() {
   const [jewelries, setJewelries] = useState([]);
+  const [seller_id, setSeller_id] = useState("")
+
 
   useEffect(() => {
     fetch("http://127.0.0.1:5555/")
@@ -37,13 +40,27 @@ function Home() {
     setJewelries(updatedJewelryArray);
   };
 
+  const filteredJewelry = jewelries.filter(jewelry => jewelry.seller_id == seller_id)
+
   return (
     <div>
+      {}
+      <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id} />
+      {/* <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id}/> */}
+      {/* {seller_id ? <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id}/> : <JewelryList
+        // jewelries={jewelries}
+        jewelries = {filteredJewelry}
+        handleDeleteItem={handleDeleteItem}
+        handleUpdatedItem={handleUpdatedItem}
+      />} */}
       <JewelryList
-        jewelries={jewelries}
+        // jewelries={jewelries}
+        seller_id={seller_id}
+        jewelries = {filteredJewelry}
         handleDeleteItem={handleDeleteItem}
         handleUpdatedItem={handleUpdatedItem}
       />
+      
     </div>
   );
 }

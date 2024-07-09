@@ -1,4 +1,22 @@
-function FilterComponent() {
+import { useState, useEffect } from "react"
+
+
+function FilterComponent({seller_id, setSeller_id}) {
+  const [sellers, setSellers] = useState([])
+
+
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5555/sellers")
+      .then((r) => r.json())
+      .then((sellersArray) => {
+        setSellers(sellersArray);
+        console.log("Sellers list: " + {sellersArray});
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+
   return (
     <div className='filter_grid'>
       <div className='filters'>
@@ -8,19 +26,25 @@ function FilterComponent() {
         </select>
       </div>
       <div className='filters'>
+      <select
+          name="name"
+          value={seller_id}
+          onChange={(e) => setSeller_id(e.target.value)}
+          placeholder="Seller name"
+          defaultValue=""
+        >
+          <option value="">Select Seller</option>
+          {sellers.map((seller) => {
+            return <option key={seller.id} value={seller.id}> {seller.name} </option>
+          })}
+        </select>
+      </div>
+      <div className='filters'>
         <select name='type' id='type'>
           <option value='rings'>Rings</option>
           <option value='earrings'>Earrings</option>
           <option value='bracelets'>Bracelets</option>
           <option value='necklaces'>Necklaces</option>
-        </select>
-      </div>
-      <div className='filters'>
-        <select name='sellers' id='sellers'>
-          <option value='name1'>Name 1</option>
-          <option value='name2'>Name 2</option>
-          <option value='name3'>Name 3</option>
-          <option value='name4'>Name 4</option>
         </select>
       </div>
       <div className='filters'>

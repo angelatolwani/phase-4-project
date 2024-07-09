@@ -6,17 +6,29 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { ThemeProvider } from "@mui/material/styles";
 import FilterIcon from "./FilterIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FilterComponent from "./FIlterComponent";
 import theme from './ThemeComponent'
 
-function Header() {
+function Header({seller_id, setSeller_id}) {
+  // const [jewelries, setJewelries] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleFilters = () => {
     setShowFilters((prevState) => !prevState);
     console.log("clicked");
   };
+
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:5555/")
+  //     .then((r) => r.json())
+  //     .then((jewelryArray) => {
+  //       setJewelries(jewelryArray);
+  //       console.log({ jewelryArray });
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -50,10 +62,11 @@ function Header() {
                   + Add New Item
                 </NavLink>{" "}
               </Button>
-              <Button onClick={toggleFilters} color='secondary'>
+              {/* <Button onClick={toggleFilters} color='secondary'>
                 <FilterIcon />
-                {showFilters && <FilterComponent />}
               </Button>
+              {showFilters && <Home />} */}
+
             </Toolbar>
           </AppBar>
         </Box>
