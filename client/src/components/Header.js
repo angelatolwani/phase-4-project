@@ -11,7 +11,6 @@ import FilterComponent from "./FIlterComponent";
 import theme from './ThemeComponent'
 
 function Header({seller_id, setSeller_id}) {
-  // const [jewelries, setJewelries] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleFilters = () => {
@@ -19,15 +18,6 @@ function Header({seller_id, setSeller_id}) {
     console.log("clicked");
   };
 
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:5555/")
-  //     .then((r) => r.json())
-  //     .then((jewelryArray) => {
-  //       setJewelries(jewelryArray);
-  //       console.log({ jewelryArray });
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
 
   return (
     <>

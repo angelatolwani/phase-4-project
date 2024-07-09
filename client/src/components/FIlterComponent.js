@@ -31,7 +31,6 @@ function FilterComponent({seller_id, setSeller_id}) {
           value={seller_id}
           onChange={(e) => setSeller_id(e.target.value)}
           placeholder="Seller name"
-          defaultValue=""
         >
           <option value="">Select Seller</option>
           {sellers.map((seller) => {

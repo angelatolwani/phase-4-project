@@ -40,22 +40,14 @@ function Home() {
     setJewelries(updatedJewelryArray);
   };
 
-  const filteredJewelry = jewelries.filter(jewelry => jewelry.seller_id == seller_id)
+  console.log(seller_id)
+  const filteredJewelry = seller_id ? jewelries.filter(jewelry => jewelry.seller_id === seller_id) : jewelries
 
   return (
     <div>
       {}
       <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id} />
-      {/* <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id}/> */}
-      {/* {seller_id ? <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id}/> : <JewelryList
-        // jewelries={jewelries}
-        jewelries = {filteredJewelry}
-        handleDeleteItem={handleDeleteItem}
-        handleUpdatedItem={handleUpdatedItem}
-      />} */}
       <JewelryList
-        // jewelries={jewelries}
-        seller_id={seller_id}
         jewelries = {filteredJewelry}
         handleDeleteItem={handleDeleteItem}
         handleUpdatedItem={handleUpdatedItem}

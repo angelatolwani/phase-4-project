@@ -1,6 +1,6 @@
 import JewelryCard from "./JewelryCard";
 
-function JewelryList({ jewelries, seller_id, handleDeleteItem, handleUpdatedItem }) {
+function JewelryList({ jewelries, handleDeleteItem, handleUpdatedItem }) {
     return (
         <ul className="cards">
                 {jewelries.map((jewelry) => {
