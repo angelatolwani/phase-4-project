@@ -1,11 +1,12 @@
 import SellersCard from "./SellersCard";
 
-function SellerList() {
+function SellerList({sellers}) {
     return (
-        <div>
-        <h2 >Sellers</h2>
-        <ul className="cards"><SellersCard /></ul>
-        </div>
+        <ul className="cards">
+        {sellers.map((seller) => {
+            return <SellersCard key={seller.id} seller={seller} />
+        })}
+    </ul>
     )
 }
 

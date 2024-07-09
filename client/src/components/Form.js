@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import SellerForm from "./SellerForm";
+
 
 function Form() {
   const [name, setName] = useState('')
@@ -8,6 +10,18 @@ function Form() {
   const [seller_id, setSeller_id] = useState('')
   const [image, setImage] = useState('')
   const [price, setPrice] = useState('')
+
+  const [sellers, setSellers] = useState([])
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5555/sellers")
+      .then((r) => r.json())
+      .then((sellersArray) => {
+        setSellers(sellersArray);
+        console.log({ sellersArray });
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   const navigate = useNavigate();
 
@@ -35,13 +49,16 @@ function Form() {
         <div className="new-plant-form">
       <h2>Form to add a new item</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
+        <select
           name="name"
-          placeholder="Seller name"
           value={seller_id}
           onChange={(e) => setSeller_id(e.target.value)}
-        />
+          placeholder="Seller name"
+        >
+          {sellers.map((seller, i) => {
+            return <option key={i} value={seller.id}> {seller.name} </option>
+          })}
+        </select>
         <input
           type="text"
           name="jewelry_name"
@@ -79,7 +96,10 @@ function Form() {
           onChange={(e) => setPrice(e.target.value)}
         />
         <button type="submit">Add Item</button>
+
+        
       </form>
+      <SellerForm />
     </div>
     )
 }

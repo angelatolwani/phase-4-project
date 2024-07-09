@@ -11,8 +11,8 @@ def run():
 
     # add sellers
     sellers = [
-        Sellers(name='Tiffany&Co', location='New York, NY'), 
-        Sellers(name='Van Cleef', location='New York, NY')
+        Sellers(name='Tiffany&Co', location='New York, NY', logo='https://i.pinimg.com/736x/3f/48/45/3f4845deae1eb7f1488e2aaa2d6ba578.jpg', website='https://www.tiffany.com/'), 
+        Sellers(name='Van Cleef', location='New York, NY', logo='https://www.langantiques.com/university/wp-content/uploads/2019/08/van_cleef_and_arpels.png', website='https://www.vancleefarpels.com/us/en/home.html')
     ]
     db.session.add_all(sellers)
     db.session.commit()

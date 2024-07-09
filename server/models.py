@@ -31,6 +31,8 @@ class Sellers(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     location = db.Column(db.String)
+    logo = db.Column(db.String)
+    website = db.Column(db.String)
 
     jewelry = db.relationship('Jewelry', back_populates='seller')
 

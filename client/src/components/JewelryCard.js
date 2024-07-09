@@ -37,6 +37,7 @@ function JewelryCard( {jewelry, handleDeleteItem, handleUpdatedItem}) {
           <img src={jewelry.image} alt="jewelry-image" />
           <h4>{jewelry.name}</h4>
           <p>Price: ${jewelry.price}</p>
+          <p>Seller: {jewelry.seller.name}</p>
           <form onSubmit={handleSubmit}>
             <input
               type="number"

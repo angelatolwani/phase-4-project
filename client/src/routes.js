@@ -19,12 +19,12 @@ const routes = [
         },
         {
           path: "/sellers",
-          element: <SellersList />,
-        },
-        {
-          path: "/sellers/:id",
           element: <SellerDetails />,
         },
+        // {
+        //   path: "/sellers/:id",
+        //   element: <SellerDetails />,
+        // },
       ],
     },
   ];

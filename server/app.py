@@ -42,6 +42,21 @@ def add_new_jewelry():
 
     return make_response(new_item.to_dict(), 201)
 
+@app.route('/sellers/form', methods=['POST'])
+def add_new_sellers():
+    data = request.get_json()
+
+    new_seller = Sellers(
+        name=data['name'],
+        location=data['location'], 
+        logo=data['logo'],
+        website=data['website']
+    )
+
+    db.session.add(new_seller)
+    db.session.commit()
+
+    return make_response(new_seller.to_dict(), 201)
 
 @app.route('/<int:id>', methods=['PATCH', 'DELETE'])
 def delete_item(id):

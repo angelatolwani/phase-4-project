@@ -4,20 +4,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
+import { ThemeProvider } from "@mui/material/styles";
 import FilterIcon from "./FilterIcon";
 import { useState } from "react";
 import FilterComponent from "./FIlterComponent";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#81D8D0",
-    },
-    secondary: purple,
-  },
-});
+import theme from './ThemeComponent'
 
 function Header() {
   const [showFilters, setShowFilters] = useState(false);
@@ -72,3 +63,5 @@ function Header() {
 }
 
 export default Header;
+
+

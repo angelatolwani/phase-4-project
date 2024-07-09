@@ -1,13 +1,26 @@
-function SellersCard() {
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
+import theme from './ThemeComponent';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+function SellersCard({seller}) {
     return (
         <li className="card">
-          <img src="https://pentagram-production.imgix.net/adc6a74e-51f1-4e83-8c2b-b20b3b08c9b3/ps_tiffany_01.jpg?rect=1120%2C0%2C5760%2C3600&w=880&fit=crop&fm=jpg&q=70&auto=format&h=548" alt="sellers-logo" />
-          <h4>Tiffany</h4>
-          <p>Location: New York</p>
+          <img src={seller.logo} alt="sellers-logo" />
+          <h4> {seller.name} </h4>
+          <p>Location:  {seller.location} </p>
           <div className="btn-group">
-          <button> 
-                Go to page
-          </button>
+          {/* <ThemeProvider theme={theme}> */}
+          <Button className="primary"
+                // color='primary'
+                variant='contained'
+                sx={{ marginRight: "20px" }}
+              >
+                <NavLink to={seller.website} target="_blank">
+                  Go to website
+                </NavLink>{" "}
+              </Button>
+            {/* </ThemeProvider> */}
           </div>
         </li>
       );
