@@ -5,8 +5,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { lime, purple } from "@mui/material/colors";
-import Home from "./Home";
+import { purple } from "@mui/material/colors";
+import FilterIcon from "./FilterIcon";
+import { useState } from "react";
+import FilterComponent from "./FIlterComponent";
 
 const theme = createTheme({
   palette: {
@@ -18,6 +20,12 @@ const theme = createTheme({
 });
 
 function Header() {
+  const [showFilters, setShowFilters] = useState(false);
+
+  const toggleFilters = () => {
+    setShowFilters((prevState) => !prevState);
+    console.log("clicked");
+  };
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -50,6 +58,10 @@ function Header() {
                 <NavLink className='nav-link' to='/form'>
                   + Add New Item
                 </NavLink>{" "}
+              </Button>
+              <Button onClick={toggleFilters} color='secondary'>
+                <FilterIcon />
+                {showFilters && <FilterComponent />}
               </Button>
             </Toolbar>
           </AppBar>
