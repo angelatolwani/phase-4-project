@@ -32,7 +32,7 @@ function FilterComponent({seller_id, setSeller_id}) {
           onChange={(e) => setSeller_id(e.target.value)}
           placeholder="Seller name"
         >
-          <option value="">Select Seller</option>
+          <option value="">Sellers (All) </option>
           {sellers.map((seller) => {
             return <option key={seller.id} value={seller.id}> {seller.name} </option>
           })}

@@ -12,7 +12,7 @@ import FilterComponent from "./FIlterComponent";
  **/
 function Home() {
   const [jewelries, setJewelries] = useState([]);
-  const [seller_id, setSeller_id] = useState("")
+  const [seller_id, setSeller_id] = useState()
 
 
   useEffect(() => {
@@ -40,8 +40,7 @@ function Home() {
     setJewelries(updatedJewelryArray);
   };
 
-  console.log(seller_id)
-  const filteredJewelry = seller_id ? jewelries.filter(jewelry => jewelry.seller_id === seller_id) : jewelries
+  const filteredJewelry = seller_id ? jewelries.filter(jewelry => jewelry.seller_id === Number(seller_id)) : jewelries
 
   return (
     <div>
