@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 
-function FilterComponent({seller_id, setSeller_id}) {
+function FilterComponent({ seller_id, setSeller_id, metal, setMetal, jewelryType, setJewelryType }) {
   const [sellers, setSellers] = useState([])
 
 
@@ -20,7 +20,12 @@ function FilterComponent({seller_id, setSeller_id}) {
   return (
     <div className='filter_grid'>
       <div className='filters'>
-        <select name='metal' id='metal'>
+        <select 
+          name='metal' 
+          value={metal}
+          onChange={(e) => setMetal(e.target.value)}
+          >
+          <option value="">Metals</option>
           <option value='gold'>Gold</option>
           <option value='silver'>Silver</option>
         </select>
@@ -30,28 +35,31 @@ function FilterComponent({seller_id, setSeller_id}) {
           name="name"
           value={seller_id}
           onChange={(e) => setSeller_id(e.target.value)}
-          placeholder="Seller name"
         >
-          <option value="">Sellers (All) </option>
+          <option value="">Sellers</option>
           {sellers.map((seller) => {
             return <option key={seller.id} value={seller.id}> {seller.name} </option>
           })}
         </select>
       </div>
       <div className='filters'>
-        <select name='type' id='type'>
-          <option value='rings'>Rings</option>
+        <select 
+          name='category' 
+          value={jewelryType}
+          onChange={(e) => setJewelryType(e.target.value)}
+        >
+          <option value="">Category</option>
+          <option value='ring'>Rings</option>
           <option value='earrings'>Earrings</option>
-          <option value='bracelets'>Bracelets</option>
-          <option value='necklaces'>Necklaces</option>
+          <option value='bracelet'>Bracelets</option>
+          <option value='necklace'>Necklaces</option>
         </select>
       </div>
       <div className='filters'>
         <select name='price' id='price'>
-          <option value='20'>Up to $20</option>
-          <option value='50'>Up to $50</option>
-          <option value='100'>Up to $100</option>
-          <option value='150+'>$150+</option>
+          <option>Price</option>
+          <option>Low to High</option>
+          <option>High to Low</option>
         </select>
       </div>
     </div>

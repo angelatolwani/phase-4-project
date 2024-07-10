@@ -13,6 +13,8 @@ import FilterComponent from "./FIlterComponent";
 function Home() {
   const [jewelries, setJewelries] = useState([]);
   const [seller_id, setSeller_id] = useState()
+  const [metal, setMetal] = useState('')
+  const [jewelryType, setJewelryType] = useState('')
 
 
   useEffect(() => {
@@ -41,13 +43,22 @@ function Home() {
   };
 
   const filteredJewelry = seller_id ? jewelries.filter(jewelry => jewelry.seller_id === Number(seller_id)) : jewelries
+  const filterByMetal = metal ? filteredJewelry.filter(jewelry => jewelry.metal.toLowerCase() === metal.toLowerCase()) : filteredJewelry
+  const filterByCategory = jewelryType ? filterByMetal.filter(jewelry => jewelry.type.toLowerCase() === jewelryType.toLowerCase()) : filterByMetal
 
   return (
     <div>
       {}
-      <FilterComponent seller_id={seller_id} setSeller_id={setSeller_id} />
+      <FilterComponent 
+        seller_id={seller_id} 
+        setSeller_id={setSeller_id} 
+        metal={metal} 
+        setMetal={setMetal}
+        jewelryType={jewelryType}
+        setJewelryType={setJewelryType} 
+      />
       <JewelryList
-        jewelries = {filteredJewelry}
+        jewelries = {filterByCategory}
         handleDeleteItem={handleDeleteItem}
         handleUpdatedItem={handleUpdatedItem}
       />
