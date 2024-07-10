@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 
-function FilterComponent({ seller_id, setSeller_id, metal, setMetal, jewelryType, setJewelryType }) {
+function FilterComponent({ sellerId, setsellerId, metal, setMetal, jewelryType, setJewelryType, lowToHigh, setLowToHigh }) {
   const [sellers, setSellers] = useState([])
 
 
@@ -10,8 +10,7 @@ function FilterComponent({ seller_id, setSeller_id, metal, setMetal, jewelryType
     fetch("http://127.0.0.1:5555/sellers")
       .then((r) => r.json())
       .then((sellersArray) => {
-        setSellers(sellersArray);
-        console.log("Sellers list: " + {sellersArray});
+        setSellers(sellersArray)
       })
       .catch((err) => console.error(err));
   }, []);
@@ -33,8 +32,8 @@ function FilterComponent({ seller_id, setSeller_id, metal, setMetal, jewelryType
       <div className='filters'>
       <select
           name="name"
-          value={seller_id}
-          onChange={(e) => setSeller_id(e.target.value)}
+          value={sellerId}
+          onChange={(e) => setsellerId(e.target.value)}
         >
           <option value="">Sellers</option>
           {sellers.map((seller) => {
@@ -56,8 +55,11 @@ function FilterComponent({ seller_id, setSeller_id, metal, setMetal, jewelryType
         </select>
       </div>
       <div className='filters'>
-        <select name='price' id='price'>
-          <option>Price</option>
+        <select 
+          name='price' 
+          id='price'
+          onChange={(e) => setLowToHigh(!lowToHigh)}
+        >
           <option>Low to High</option>
           <option>High to Low</option>
         </select>

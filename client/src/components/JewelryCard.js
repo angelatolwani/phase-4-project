@@ -54,7 +54,6 @@ function JewelryCard( {jewelry, handleDeleteItem, handleUpdatedItem}) {
                 Delete 
           </button>
           </div>
-          {console.log('in jewelry card')}
         </li>
       );
 }

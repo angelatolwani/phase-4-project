@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 function SellerForm() {
@@ -27,7 +27,7 @@ function SellerForm() {
   }
 
     return (
-    <div className="new-plant-form">
+    <div className="new-item-form">
       <h2>Form to add a new seller</h2>
       <form onSubmit={handleSubmit}>
         <input

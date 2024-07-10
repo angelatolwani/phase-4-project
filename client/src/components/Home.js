@@ -2,27 +2,19 @@ import React, { useEffect, useState } from "react";
 import JewelryList from "./JewelryList";
 import FilterComponent from "./FIlterComponent";
 
-/**
- * WE have to add handle PATCH and DELETE
- * useEffect -> GET method
- * 1) GET Method -> to see all the images/name/price of all items of all sellers
- * 2) PATCH method -> to update a price
- * 3) DELETE method -> to delete an item from db
- * Not in priority: filter feature
- **/
 function Home() {
   const [jewelries, setJewelries] = useState([]);
-  const [seller_id, setSeller_id] = useState()
+  const [sellerId, setsellerId] = useState()
   const [metal, setMetal] = useState('')
   const [jewelryType, setJewelryType] = useState('')
+  const [lowToHigh, setLowToHigh] = useState(true)
 
 
   useEffect(() => {
     fetch("http://127.0.0.1:5555/")
       .then((r) => r.json())
       .then((jewelryArray) => {
-        setJewelries(jewelryArray);
-        console.log({ jewelryArray });
+        setJewelries(jewelryArray)
       })
       .catch((err) => console.error(err));
   }, []);
@@ -42,23 +34,26 @@ function Home() {
     setJewelries(updatedJewelryArray);
   };
 
-  const filteredJewelry = seller_id ? jewelries.filter(jewelry => jewelry.seller_id === Number(seller_id)) : jewelries
+  const filteredJewelry = sellerId ? jewelries.filter(jewelry => jewelry.seller_id === Number(sellerId)) : jewelries
   const filterByMetal = metal ? filteredJewelry.filter(jewelry => jewelry.metal.toLowerCase() === metal.toLowerCase()) : filteredJewelry
   const filterByCategory = jewelryType ? filterByMetal.filter(jewelry => jewelry.type.toLowerCase() === jewelryType.toLowerCase()) : filterByMetal
+  const sortedJeweleries = lowToHigh ? filterByCategory.sort((a,b) => a.price - b.price) : filterByCategory.sort((a,b) => b.price - a.price)
 
   return (
     <div>
       {}
       <FilterComponent 
-        seller_id={seller_id} 
-        setSeller_id={setSeller_id} 
+        sellerId={sellerId} 
+        setsellerId={setsellerId} 
         metal={metal} 
         setMetal={setMetal}
         jewelryType={jewelryType}
-        setJewelryType={setJewelryType} 
+        setJewelryType={setJewelryType}
+        lowToHigh={lowToHigh}
+        setLowToHigh={setLowToHigh} 
       />
       <JewelryList
-        jewelries = {filterByCategory}
+        jewelries = {sortedJeweleries}
         handleDeleteItem={handleDeleteItem}
         handleUpdatedItem={handleUpdatedItem}
       />

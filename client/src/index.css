@@ -20,7 +20,8 @@ a.nav-link:hover {
 .filter_grid{
   display: flex;
   background-color: #81D8D0;
-  margin-bottom: 10px; /*check*/
+  margin-bottom: 10px; 
+  padding-bottom: 10px;
 }
 
 .filters {
@@ -34,6 +35,11 @@ body {
 
 h2 {
   margin-bottom: 1rem;
+}
+
+h4 {
+  height: 45px;
+  overflow: hidden;
 }
 
 button {
@@ -72,28 +78,28 @@ main {
   padding: 0 1rem;
 }
 
-.new-plant-form {
+.new-item-form {
   padding: 2rem 1rem;
   margin: 2rem 0;
   background-color: #81D8D0
 }
 
-.new-plant-form form {
+.new-item-form form {
   display: flex;
   justify-content: center;
 }
 
-.new-plant-form input {
+.new-item-form input {
   margin-right: 2rem;
   flex: 1;
 }
 
-.new-plant-form select {
+.new-item-form select {
   margin-right: 2rem;
   flex: 1;
 }
 
-.new-plant-form button {
+.new-item-form button {
   width: 150px;
 }
 
@@ -129,10 +135,12 @@ input:focus {
 
 .card {
   margin: 1rem;
+  overflow: hidden;
 }
 
 .card img {
   width: 100%;
+  height: 220px;
 }
 
 .card button {

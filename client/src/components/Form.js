@@ -7,7 +7,7 @@ function Form() {
   const [name, setName] = useState('')
   const [metal, setMetal] = useState('')
   const [type, setType] = useState('')
-  const [seller_id, setSeller_id] = useState('')
+  const [sellerId, setsellerId] = useState('')
   const [image, setImage] = useState('')
   const [price, setPrice] = useState('')
 
@@ -36,7 +36,7 @@ function Form() {
         name: name,
         metal: metal,
         type: type,
-        seller_id: Number(seller_id),
+        seller_id: Number(sellerId),
         image: image,
         price: parseFloat(price),
       }),
@@ -46,13 +46,13 @@ function Form() {
   }
 
     return (
-        <div className="new-plant-form">
+        <div className="new-item-form">
       <h2>Form to add a new item</h2>
       <form onSubmit={handleSubmit}>
         <select
           name="name"
-          value={seller_id}
-          onChange={(e) => setSeller_id(e.target.value)}
+          value={sellerId}
+          onChange={(e) => setsellerId(e.target.value)}
           placeholder="Seller name"
         >
           {sellers.map((seller, i) => {
